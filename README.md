@@ -1,7 +1,7 @@
 # ChatGPT Account Switcher
 
 <p align="center">
-  <img src="extension/icons/icon128.png" width="96" alt="ChatGPT Account Switcher icon" />
+  <img src="docs/screenshots/banner.png" width="100%" alt="ChatGPT Accounts: One extension. Multiple accounts. Seamless switching." />
 </p>
 
 <p align="center">
@@ -15,10 +15,6 @@
   <img alt="Tests" src="https://img.shields.io/badge/tests-38%20passing-2EA44F" />
   <img alt="No telemetry" src="https://img.shields.io/badge/telemetry-none-10A37F" />
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue" />
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/popup.png" width="320" alt="Popup showing Work and Personal accounts with Switch buttons" />
 </p>
 
 ChatGPT Account Switcher stores a local snapshot of each account's
@@ -93,6 +89,10 @@ From File…**. Firefox keeps it across restarts.
 A signed build will be linked here once the AMO listing is available.
 
 ## Usage
+
+<p align="center">
+  <img src="docs/screenshots/popup.png" width="320" alt="Popup showing Work and Personal accounts with Switch buttons" />
+</p>
 
 ### Save your first account
 
