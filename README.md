@@ -34,10 +34,13 @@ It runs entirely in your browser: no server, no analytics, no third-party code.
 - **Never lose an unsaved login** — the current session is snapshotted before a
   switch, and the add-on refuses to clear a live session it cannot attribute to
   a saved account.
-- **Add as many accounts as you need** — a built-in *Log out & add another
-  account* button clears the browser session while keeping your snapshots.
+- **Add as many accounts as you need** — a built-in *Log out & add* button
+  clears the browser session while keeping your snapshots.
 - **Last-used history** — accounts are sorted by recent use and show
   `in use now`, `last used 2h ago`, etc.
+- **Scales to long lists** — search by name or email, and when you have more
+  than four accounts the secondary actions move behind a `⋯` menu so the popup
+  stays compact with a single scroll area.
 - **Update, rename, delete** — refresh a snapshot after an auth change, keep
   your own labels, or remove an account without touching the live session.
 - **Export / import** — move accounts between Firefox profiles or keep an
@@ -102,7 +105,7 @@ A signed build will be linked here once the AMO listing is available.
 
 ### Add another account
 
-1. Press **Log out & add another account**.
+1. Press **Log out & add**.
    This clears the browser's ChatGPT cookies but keeps every saved snapshot.
 2. Sign in to ChatGPT with the second account.
 3. Open the popup and press **+ Save current session** again.
@@ -124,6 +127,16 @@ list shows last-used times so you can see which account was used when.
 
 If the browser session is signed in as an account that is not saved yet, the
 add-on stops instead of silently destroying it. Save that session first.
+
+### Many accounts
+
+After you save more than four accounts, the popup adds a search field and moves
+**Update**, **Rename**, and **Delete** behind the `⋯` button on each row. The
+account list scrolls inside the popup instead of making the whole panel taller.
+
+<p align="center">
+  <img src="docs/screenshots/many-accounts.png" width="300" alt="Popup with a search field and compact account rows with a more-actions menu" />
+</p>
 
 ## Export and import
 

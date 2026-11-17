@@ -5,8 +5,11 @@ const api = globalThis.browser ?? globalThis.chrome;
 const els = {
   activeLine: document.getElementById("activeLine"),
   warning: document.getElementById("warning"),
+  searchWrap: document.getElementById("searchWrap"),
+  searchInput: document.getElementById("searchInput"),
   list: document.getElementById("accountList"),
   empty: document.getElementById("empty"),
+  noResults: document.getElementById("noResults"),
   status: document.getElementById("status"),
   saveForm: document.getElementById("saveForm"),
   nameInput: document.getElementById("nameInput"),
@@ -21,7 +24,22 @@ let state = {
   activeId: null,
   lastSeenEmail: null
 };
+let filter = "";
 let busy = false;
+
+const DENSE_THRESHOLD = 4;
+
+function denseMode() {
+  return state.accounts.length > DENSE_THRESHOLD;
+}
+
+function visibleAccounts() {
+  const query = filter.trim().toLowerCase();
+  if (!query) return state.accounts;
+  return state.accounts.filter((account) =>
+    (account.name + " " + (account.email || "")).toLowerCase().includes(query)
+  );
+}
 
 async function send(message) {
   try {
@@ -141,10 +159,10 @@ function startRename(id, record, nameEl) {
   input.addEventListener("blur", () => finish(true), { once: true });
 }
 
-function renderAccount(record) {
+function renderAccount(record, dense) {
   let armed = false;
   const isActive = record.id === state.activeId;
-  const row = document.createElement("div");
+  const row = document.createElement("li");
   row.className = "account";
 
   const body = document.createElement("div");
@@ -237,26 +255,68 @@ function renderAccount(record) {
     render();
   }, "Delete this saved account. Does not log you out.");
 
-  actions.appendChild(switchBtn);
-  actions.appendChild(updateBtn);
-  actions.appendChild(renameBtn);
-  actions.appendChild(removeBtn);
+  if (dense) {
+    const moreBtn = button("⋯", "small ghost more", () => {
+      const open = row.classList.toggle("expanded");
+      moreBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }, "More actions");
+    moreBtn.setAttribute("aria-label", "More actions for " + record.name);
+    moreBtn.setAttribute("aria-expanded", "false");
 
-  row.appendChild(body);
-  row.appendChild(actions);
+    const main = document.createElement("div");
+    main.className = "account-main";
+    actions.appendChild(switchBtn);
+    actions.appendChild(moreBtn);
+    main.appendChild(body);
+    main.appendChild(actions);
+
+    const menu = document.createElement("div");
+    menu.className = "account-menu";
+    menu.appendChild(updateBtn);
+    menu.appendChild(renameBtn);
+    menu.appendChild(removeBtn);
+
+    row.appendChild(main);
+    row.appendChild(menu);
+  } else {
+    actions.appendChild(switchBtn);
+    actions.appendChild(updateBtn);
+    actions.appendChild(renameBtn);
+    actions.appendChild(removeBtn);
+
+    row.appendChild(body);
+    row.appendChild(actions);
+  }
   return row;
 }
 
 function render() {
   renderHeader();
 
+  const dense = denseMode();
+  if (!dense && filter) {
+    filter = "";
+    els.searchInput.value = "";
+  }
+
+  els.searchWrap.classList.toggle("hidden", !dense);
+  els.searchInput.placeholder = "Search " + state.accounts.length + " accounts";
+  els.noResults.textContent = filter
+    ? "No accounts match “" + filter.trim() + "”."
+    : "No accounts match your search.";
+  els.noResults.classList.add("hidden");
+
+  const accounts = dense ? visibleAccounts() : state.accounts;
   els.list.textContent = "";
   if (!state.accounts.length) {
     els.empty.classList.remove("hidden");
+  } else if (!accounts.length) {
+    els.empty.classList.add("hidden");
+    els.noResults.classList.remove("hidden");
   } else {
     els.empty.classList.add("hidden");
-    state.accounts.forEach((record) => {
-      els.list.appendChild(renderAccount(record));
+    accounts.forEach((record) => {
+      els.list.appendChild(renderAccount(record, dense));
     });
   }
 }
@@ -333,6 +393,30 @@ els.backupBtn.addEventListener("click", async () => {
     } catch (fallbackErr) {
       setStatus("Could not open the backup page.", "error");
     }
+  }
+});
+
+els.searchInput.addEventListener("input", () => {
+  filter = els.searchInput.value;
+  render();
+});
+
+function collapseAccount(row) {
+  row.classList.remove("expanded");
+  const moreBtn = row.querySelector(".more");
+  if (moreBtn) moreBtn.setAttribute("aria-expanded", "false");
+}
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest) return;
+  const opened = event.target.closest(".more");
+  if (opened) {
+    document.querySelectorAll(".account.expanded").forEach((row) => {
+      if (!row.contains(opened)) collapseAccount(row);
+    });
+  }
+  if (!event.target.closest(".account")) {
+    document.querySelectorAll(".account.expanded").forEach(collapseAccount);
   }
 });
 

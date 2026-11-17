@@ -13,11 +13,21 @@
     </div>
     <div id="activeLine" class="active-line">No active account</div>
     <p id="warning" class="warning hidden"></p>
+    <div id="searchWrap" class="search-wrap hidden">
+      <input
+        id="searchInput"
+        class="input search"
+        type="search"
+        placeholder="Search accounts"
+        autocomplete="off"
+      />
+    </div>
   </header>
 
   <main class="main">
     <ul id="accountList" class="list"></ul>
     <p id="empty" class="empty">No accounts saved yet.<br />Log in to chatgpt.com, then press “Save current session”.</p>
+    <p id="noResults" class="empty hidden">No accounts match your search.</p>
   </main>
 
   <footer class="footer">
@@ -48,10 +58,7 @@
         id="signOutBtn"
         class="btn ghost"
         title="Clear the browser's ChatGPT session (saved accounts are kept) and open the login page"
-      >Log out &amp; add another account</button>
-    </div>
-
-    <div class="row">
+      >Log out &amp; add</button>
       <button
         id="backupBtn"
         class="btn ghost"
