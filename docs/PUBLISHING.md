@@ -6,7 +6,8 @@ This is the release checklist for the signed build and the AMO listing.
 
 - AMO page: <https://addons.mozilla.org/en-US/firefox/addon/chatgpt-multi-account/>
 - Add-on ID: `chatgpt-account-switcher@tje3d.github.io`
-- v1.0.0 submitted on 2026-11-17; status: nominated (awaiting review).
+- v1.0.0 submitted on 2026-11-17.
+- v1.0.1 submitted on 2026-11-18 with the many-account popup update; status: nominated (awaiting review).
 
 ## 1. Prepare the release
 

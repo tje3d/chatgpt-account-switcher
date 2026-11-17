@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-account-switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Firefox add-on: save and switch between multiple ChatGPT accounts.",
   "license": "MIT",

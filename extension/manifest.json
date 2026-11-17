@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT Account Switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Save multiple ChatGPT sessions locally and switch between them in one click.",
   "homepage_url": "https://github.com/tje3d/chatgpt-account-switcher",
   "permissions": ["cookies", "storage", "tabs"],

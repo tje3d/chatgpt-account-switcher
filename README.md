@@ -24,7 +24,7 @@ login every time.
 
 It runs entirely in your browser: no server, no analytics, no third-party code.
 
-> **Status:** `v1.0.0` has been submitted to AMO for review. Until the listing
+> **Status:** `v1.0.1` has been submitted to AMO for review. Until the listing
 > is approved, install from source or use a signed unlisted build.
 
 ## Features
@@ -216,7 +216,7 @@ The full policy is in [PRIVACY.md](PRIVACY.md).
 ```bash
 npm test        # 38 behaviour and integration tests
 npm run lint    # web-ext lint
-npm run build   # icons + extension/ → dist/chatgpt-account-switcher-1.0.0.xpi
+npm run build   # icons + extension/ → dist/chatgpt-account-switcher-<version>.xpi
 npm start       # launch a temporary Firefox profile with the add-on
 ```
 
