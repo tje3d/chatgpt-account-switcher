@@ -2,6 +2,12 @@
 
 This is the release checklist for the signed build and the AMO listing.
 
+## Current listing
+
+- AMO page: <https://addons.mozilla.org/en-US/firefox/addon/chatgpt-multi-account/>
+- Add-on ID: `chatgpt-account-switcher@tje3d.github.io`
+- v1.0.0 submitted on 2026-11-17; status: nominated (awaiting review).
+
 ## 1. Prepare the release
 
 1. Bump `version` in both `extension/manifest.json` and `package.json`.
@@ -28,7 +34,7 @@ This is the release checklist for the signed build and the AMO listing.
    - **Name:** ChatGPT Account Switcher
    - **Summary:** Save multiple ChatGPT accounts locally and switch between
      them in one click.
-   - **Category:** Productivity
+   - **Category:** Other (the AMO API has no Productivity category)
    - **License:** MIT
    - **Privacy policy:** link to `PRIVACY.md` in the GitHub repository
    - **Support site / homepage:** <https://github.com/tje3d/chatgpt-account-switcher>
@@ -81,7 +87,29 @@ npx web-ext sign \
 Install the signed `.xpi` from `about:addons` → gear → **Install Add-on From
 File…**.
 
-## 5. After approval
+## 5. Publish a listed build from the command line
+
+Use this for the first public release and for later updates. The listing
+metadata lives in `docs/amo-metadata.json`; `--approval-timeout=0` submits the
+version and returns immediately instead of waiting days for human review.
+
+```bash
+npm run build
+npx web-ext sign \
+  --source-dir extension \
+  --artifacts-dir signed \
+  --channel listed \
+  --amo-metadata docs/amo-metadata.json \
+  --approval-timeout=0 \
+  --api-key "$AMO_JWT_ISSUER" \
+  --api-secret "$AMO_JWT_SECRET"
+```
+
+The AMO slug is `chatgpt-multi-account` because `chatgpt-account-switcher` was
+already taken by another add-on. The Gecko add-on ID is
+`chatgpt-account-switcher@tje3d.github.io`.
+
+## 6. After approval
 
 - Add the AMO link and badge to `README.md`.
 - Create a Git tag and GitHub release for the version.

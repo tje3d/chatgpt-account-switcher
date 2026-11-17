@@ -13,7 +13,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 
 const ROOT = path.join(__dirname, "..", "extension");
-const EXT_ID = "chatgpt-account-switcher@local";
+const EXT_ID = "chatgpt-account-switcher@tje3d.github.io";
 
 function inDomain(host, domain) {
   return host === domain || host.endsWith("." + domain);

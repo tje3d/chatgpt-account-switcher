@@ -1,0 +1,31 @@
+{
+  "slug": "chatgpt-multi-account",
+  "name": {
+    "en-US": "ChatGPT Account Switcher"
+  },
+  "summary": {
+    "en-US": "Save multiple ChatGPT logins locally and switch between them in one click."
+  },
+  "description": {
+    "en-US": "ChatGPT Account Switcher keeps a local snapshot of each ChatGPT session and restores the one you pick. Every account stays signed in without typing passwords again.\n\nFeatures:\n- One-click switching between saved ChatGPT accounts\n- Saves the current login before switching, so an unsaved session is never lost\n- Add accounts with the built-in \"Log out & add another account\" flow\n- Last-used history and custom account names\n- Export and import portable JSON backups of your saved accounts\n- Light and dark UI that follows the Firefox theme\n\nThe extension runs entirely in your browser. There is no server, no analytics, no telemetry and no remote code. Cookies are stored in Firefox's local extension storage and are only read or restored for chatgpt.com and openai.com.\n\nThis is an independent project, not affiliated with or endorsed by OpenAI. ChatGPT is a trademark of OpenAI."
+  },
+  "categories": {
+    "firefox": [
+      "other"
+    ]
+  },
+  "homepage": {
+    "en-US": "https://github.com/tje3d/chatgpt-account-switcher"
+  },
+  "support_url": {
+    "en-US": "https://github.com/tje3d/chatgpt-account-switcher/issues"
+  },
+  "requires_payment": false,
+  "version": {
+    "license": "MIT",
+    "release_notes": {
+      "en-US": "First public release. Save, switch, rename, export and import ChatGPT accounts."
+    },
+    "approval_notes": "This extension stores user-initiated snapshots of chatgpt.com and openai.com cookies in browser.storage.local so the user can switch between their own ChatGPT accounts without logging in again. There is no server, no analytics and no remote code; the only network request is a same-origin read of https://chatgpt.com/api/auth/session to display the signed-in email.\n\nPermissions:\n- cookies: read, clear and restore cookies for the two allowed domains only.\n- storage: keep account snapshots and labels locally.\n- tabs: reload open ChatGPT tabs after switching.\n\nSource code and automated tests are public at https://github.com/tje3d/chatgpt-account-switcher. The submitted XPI contains only human-readable source. A full login test needs a normal ChatGPT account; export/import can be tested without sharing credentials."
+  }
+}

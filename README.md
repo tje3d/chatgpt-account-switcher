@@ -28,8 +28,8 @@ login every time.
 
 It runs entirely in your browser: no server, no analytics, no third-party code.
 
-> **Status:** source release `v1.0.0`. The AMO listing is not published yet;
-> for now, install from source or use a signed unlisted build.
+> **Status:** `v1.0.0` has been submitted to AMO for review. Until the listing
+> is approved, install from source or use a signed unlisted build.
 
 ## Features
 
