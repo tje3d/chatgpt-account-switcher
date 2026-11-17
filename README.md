@@ -185,6 +185,8 @@ is reported.
   multiple accounts to avoid rate limits may violate OpenAI's terms; use this
   for accounts you own.
 
+The full policy is in [PRIVACY.md](PRIVACY.md).
+
 ## Limitations
 
 - Only Firefox's **default cookie store** is handled. Tabs in Multi-Account
@@ -223,7 +225,9 @@ tests/
   background.test.js    message-router integration tests
 tools/
   make_icons.py         dependency-free PNG icon generator
+  build.js              version-aware XPI packaging
 docs/
+  PUBLISHING.md         AMO signing and listing checklist
   screenshots/          README screenshots (demo data, no real accounts)
 ```
 
@@ -233,7 +237,8 @@ Issues and pull requests are welcome. Please run `npm test` and `npm run lint`
 before submitting a change, and never attach real cookie exports or account
 backups to an issue.
 
-For security reports, see [SECURITY.md](SECURITY.md).
+For security reports, see [SECURITY.md](SECURITY.md). The AMO release
+checklist is in [docs/PUBLISHING.md](docs/PUBLISHING.md).
 
 ## License
 
