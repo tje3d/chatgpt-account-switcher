@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChatGPT Account Switcher</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <img src="../icons/icon32.png" alt="" class="brand-icon" />
+      <span>ChatGPT Accounts</span>
+    </div>
+    <div id="activeLine" class="active-line">No active account</div>
+    <p id="warning" class="warning hidden"></p>
+  </header>
+
+  <main class="main">
+    <ul id="accountList" class="list"></ul>
+    <p id="empty" class="empty">No accounts saved yet.<br />Log in to chatgpt.com, then press “Save current session”.</p>
+  </main>
+
+  <footer class="footer">
+    <div id="status" class="status" role="status"></div>
+
+    <form id="saveForm" class="save-form hidden">
+      <input
+        id="nameInput"
+        class="input"
+        type="text"
+        maxlength="64"
+        placeholder="Account name (e.g. Work)"
+        autocomplete="off"
+        required
+      />
+      <div class="row">
+        <button type="submit" class="btn primary">Save current session</button>
+        <button type="button" id="cancelSave" class="btn ghost">Cancel</button>
+      </div>
+    </form>
+
+    <div class="row">
+      <button id="addBtn" class="btn primary">+ Save current session</button>
+    </div>
+
+    <div class="row">
+      <button
+        id="signOutBtn"
+        class="btn ghost"
+        title="Clear the browser's ChatGPT session (saved accounts are kept) and open the login page"
+      >Log out &amp; add another account</button>
+    </div>
+
+    <div class="row">
+      <button
+        id="backupBtn"
+        class="btn ghost"
+        title="Export saved accounts to a file, or import a backup"
+      >Export / Import</button>
+    </div>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "chatgpt-account-switcher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox add-on: save and switch between multiple ChatGPT accounts.",
+  "license": "MIT",
+  "author": "Moein Porkamel",
+  "homepage": "https://github.com/tje3d/chatgpt-account-switcher#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tje3d/chatgpt-account-switcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tje3d/chatgpt-account-switcher/issues"
+  },
+  "keywords": [
+    "firefox",
+    "addon",
+    "chatgpt",
+    "account-switcher"
+  ],
+  "scripts": {
+    "test": "node --test tests/",
+    "icons": "python3 tools/make_icons.py",
+    "lint": "npx --yes web-ext lint --source-dir extension",
+    "build": "npm run icons && rm -f dist/chatgpt-account-switcher-1.0.0.xpi && cd extension && zip -qr ../dist/chatgpt-account-switcher-1.0.0.xpi . -x '*.DS_Store'",
+    "start": "npx --yes web-ext run --source-dir extension"
+  }
+}

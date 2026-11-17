@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Export / Import — ChatGPT Account Switcher</title>
+  <link rel="stylesheet" href="../popup/popup.css" />
+  <link rel="stylesheet" href="backup.css" />
+</head>
+<body class="backup-page">
+  <header class="header">
+    <div class="brand">
+      <img src="../icons/icon32.png" alt="" class="brand-icon" />
+      <span>ChatGPT Accounts</span>
+    </div>
+    <div id="activeLine" class="active-line">Loading saved accounts…</div>
+  </header>
+
+  <main class="backup-main">
+    <section class="panel">
+      <h2>Export backup</h2>
+      <p class="note">
+        Downloads every saved account, including its login cookies. Anyone who
+        has the file can sign in as those accounts until the cookies expire.
+        Keep it private and delete it when you are done.
+      </p>
+      <button id="exportBtn" class="btn primary" disabled>Export accounts</button>
+    </section>
+
+    <section class="panel">
+      <h2>Import backup</h2>
+      <p class="note">
+        Merges accounts from a backup file. Accounts with the same id are
+        replaced; everything else stays. The browser's current login is not
+        changed. Only import files you exported yourself.
+      </p>
+      <input id="importFile" type="file" accept=".json,application/json" class="hidden" />
+      <button id="importBtn" class="btn ghost">Choose file…</button>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+  </main>
+
+  <script src="backup.js"></script>
+</body>
+</html>
